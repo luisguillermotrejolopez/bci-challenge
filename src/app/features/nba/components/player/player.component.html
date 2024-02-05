@@ -1,0 +1,64 @@
+<h1 class="top-title">NBA Jugadores</h1>
+
+<div class="top-container">
+  <div class="searcher">
+    <mat-form-field>
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Digite el valor a buscar" #input>
+    </mat-form-field>
+  </div>
+  <div class="button-add">
+    <mat-icon color="primary" (click)="showForm()">person_add</mat-icon>
+  </div>
+</div>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+        Nombre
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by lastName">
+        Apellido
+      </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by city" class="col-city">
+        Ciudad
+      </th>
+      <td mat-cell *matCellDef="let element" class="col-city"> {{element.city}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="division">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by division" class="col-division">
+        División
+      </th>
+      <td mat-cell *matCellDef="let element" class="col-division"> {{element.division}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="options">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let element"> 
+        <mat-icon color="primary" (click)="edit(element)">edit</mat-icon>
+        <mat-icon color="warn" (click)="delete(element)">delete</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No hay datos que coincidan con el filtro "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 20, 40]"
+                 showFirstLastButtons
+                 aria-label="Seleccionar página de elementos periódicos">
+  </mat-paginator>
+</div>
