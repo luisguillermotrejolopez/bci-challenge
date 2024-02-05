@@ -66,7 +66,7 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  public showForm(): void {
+  public openDialogRegister(): void {
     const dialogRef = this._dialog.open(FormComponent, {
       width: this.dialogFormWidth
     });
@@ -74,7 +74,7 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     this.subscribeDialogCloseEvent(dialogRef);
   }
 
-  public edit(player: Player): void {
+  public openDialogUpdate(player: Player): void {
     const dialogRef = this._dialog.open(FormComponent, {
       width: this.dialogFormWidth,
       data: player
@@ -83,7 +83,7 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     this.subscribeDialogCloseEvent(dialogRef);
   }
 
-  public delete(player: Player): void {
+  public openDialogConfirmation(player: Player): void {
     const dialogRef = this._dialog.open(ConfirmationDeleteComponent, {
       width: this.dialogConfirmationWidth,
       data: player,
@@ -94,7 +94,9 @@ export class PlayerComponent implements OnInit, AfterViewInit {
 
   private subscribeDialogCloseEvent(dialogRef: any): void {
     dialogRef.afterClosed().subscribe((result: any) => {
-      this.setDataDource();
+      if (result !== undefined) {
+        this.setDataDource();
+      }
     });
   }
 

@@ -27,7 +27,7 @@ export class ConfirmationDeleteComponent implements OnInit {
   }
 
   public closeDialog(): void {
-    this.dialogRef.close();
+    this.dialogRef.close('Confirmation');
   }
 
 }

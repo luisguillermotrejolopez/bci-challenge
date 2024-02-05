@@ -57,7 +57,7 @@ export class FormComponent implements OnInit {
   } 
   
   private closeDialog(): void {
-    this.dialogRef.close();
+    this.dialogRef.close('Form');
   }
 
 }
