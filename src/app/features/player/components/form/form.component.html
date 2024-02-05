@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>{{ title }} Jugador</h1>
+<div>
+  <form [formGroup]="playerForm" (submit)="send()">
+    <mat-form-field appearance="fill">
+      <mat-label>Digite el nombre</mat-label>
+      <input matInput placeholder="Nombre" formControlName="name" required>
+      <mat-error *ngIf="playerForm.controls['name'].hasError('required')">Debe digitar el nombre</mat-error>
+      <mat-error *ngIf="playerForm.controls['name'].hasError('maxlength')">No puede tener más de 20 caracteres</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Digite el apellido</mat-label>
+      <input matInput placeholder="Apellido" formControlName="lastName" required>
+      <mat-error *ngIf="playerForm.controls['lastName'].hasError('required')">Debe digitar el apellido</mat-error>
+      <mat-error *ngIf="playerForm.controls['lastName'].hasError('maxlength')">No puede tener más de 20 caracteres</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Digite la ciudad</mat-label>
+      <input matInput placeholder="Ciudad" formControlName="city" required>
+      <mat-error *ngIf="playerForm.controls['city'].hasError('required')">Debe digitar la ciudad</mat-error>
+      <mat-error *ngIf="playerForm.controls['city'].hasError('maxlength')">No puede tener más de 20 caracteres</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Digite la división</mat-label>
+      <input matInput placeholder="División" formControlName="division" required>
+      <mat-error *ngIf="playerForm.controls['division'].hasError('required')">Debe digitar la división</mat-error>
+      <mat-error *ngIf="playerForm.controls['division'].hasError('maxlength')">No puede tener más de 20 caracteres</mat-error>
+    </mat-form-field>
+    <mat-error *ngIf="playerExists" class="label-error">El jugador ya está registrado</mat-error>
+    <div class="container-button">
+      <button mat-raised-button color="primary" [disabled]="playerForm.invalid">Guardar</button>
+    </div>
+  </form>
+</div>

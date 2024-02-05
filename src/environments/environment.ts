@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'https://free-nba.p.rapidapi.com',
+  header: {
+    rapidApiKey: 'b840cfad2cmshf86be326539c7e9p110a77jsna222edddb4ac',
+    rapidApiHost: 'free-nba.p.rapidapi.com'
+  }
 };
 
 /*
